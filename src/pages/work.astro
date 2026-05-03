@@ -38,16 +38,22 @@ const description = 'Climate downscaling research and applied ML side-projects.'
 					predictions that match the underlying physics.
 				</p>
 				<figure>
-					<img
-						src="/media/work/precipitation.jpg"
-						alt="Predicted vs residual precipitation across four climate variables"
-						loading="lazy"
-					/>
+					<video
+						autoplay
+						loop
+						muted
+						playsinline
+						preload="metadata"
+						poster="/media/work/precipitation-var4-poster.jpg"
+					>
+						<source src="/media/work/precipitation-var4.mp4" type="video/mp4" />
+						Your browser does not support the video tag.
+					</video>
 					<figcaption>
-						Right half of the model evaluation panel: per-variable <strong>predictions</strong>
-						(left column) alongside their <strong>residuals</strong> (right column) against
-						ground-truth high-resolution data. Low residual energy across all four variables
-						means the model is reproducing the fine-scale structure, not just the mean.
+						<strong>Precipitation (var 4) over training</strong> &mdash; from left to right:
+						the coarse-resolution input, the high-resolution ground truth, the model's
+						prediction, and the residual error. Watch the prediction sharpen as training
+						progresses; the residual stays low even as the predicted field gains structure.
 					</figcaption>
 				</figure>
 			</article>
