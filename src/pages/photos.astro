@@ -1,0 +1,173 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE, SITE_INSTAGRAM } from '../consts';
+
+const title = 'Photos';
+const description = 'Landscape and astrophotography by Declan Curran.';
+
+const gallery = [
+	{
+		src: '/media/photos/Koz_Comet_edited.jpg',
+		alt: 'Comet over Mt Kosciuszko',
+		caption: 'Comet C/2023 A3 over Mt Kosciuszko, NSW',
+	},
+	{
+		src: '/media/photos/Kosciuszko_Short.jpg',
+		alt: 'Stars rising over Kosciuszko ridge',
+		caption: 'Kosciuszko, short exposure',
+	},
+	{
+		src: '/media/photos/IMG_0298_edited.jpg',
+		alt: 'Milky Way over silhouetted gum trees',
+		caption: 'Stars and gums',
+	},
+	{
+		src: '/media/photos/Koz_Comet_Raw2.jpg',
+		alt: 'Comet over Kosciuszko, raw frame',
+		caption: 'Same comet, single raw frame &mdash; before stacking',
+	},
+	{
+		src: '/media/photos/IMG_0640_ballina.jpg',
+		alt: 'Night sky from Ballina',
+		caption: 'Ballina, NSW',
+	},
+	{
+		src: '/media/photos/IMG_0645_ballina.jpg',
+		alt: 'Night sky from Ballina',
+		caption: 'Ballina, NSW',
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`${title} — ${SITE_TITLE}`} description={description} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="head">
+				<p class="eyebrow">Photos</p>
+				<h1>Landscape, travel &amp; the night sky.</h1>
+				<p class="lede">
+					Mostly shot from somewhere in regional Australia, usually well after dark. More on
+					<a href={SITE_INSTAGRAM} target="_blank" rel="noopener">Instagram</a>.
+				</p>
+			</section>
+
+			<section class="timelapse">
+				<h2>Timelapse</h2>
+				<video
+					controls
+					preload="metadata"
+					poster="/media/photos/timelapse-poster.jpg"
+					playsinline
+					muted
+				>
+					<source src="/media/photos/timelapse.mp4" type="video/mp4" />
+					Your browser does not support the video tag.
+				</video>
+				<p class="caption">Cloud and stars rolling over a paddock, GoPro on the ground.</p>
+			</section>
+
+			<section class="gallery">
+				<h2>Stills</h2>
+				<div class="grid">
+					{
+						gallery.map((p) => (
+							<figure>
+								<img src={p.src} alt={p.alt} loading="lazy" />
+								<figcaption set:html={p.caption} />
+							</figure>
+						))
+					}
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.head {
+		padding: 4em 0 2em;
+	}
+	.eyebrow {
+		color: var(--accent);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		font-size: 0.85em;
+		margin: 0 0 0.5em;
+	}
+	.head h1 {
+		font-size: clamp(2.2rem, 6vw, 3.2rem);
+		line-height: 1.1;
+		letter-spacing: -0.02em;
+		margin: 0 0 0.5em;
+	}
+	.lede {
+		font-size: 1.1em;
+		color: rgb(var(--gray-dark));
+		max-width: 38em;
+		margin: 0;
+	}
+	h2 {
+		font-size: 1.4em;
+		margin: 0 0 1em;
+	}
+
+	.timelapse {
+		padding: 2em 0;
+		border-top: 1px solid rgb(var(--gray-light));
+	}
+	.timelapse video {
+		width: 100%;
+		border-radius: 8px;
+		display: block;
+		background: black;
+	}
+	.caption {
+		font-size: 0.85em;
+		color: rgb(var(--gray));
+		margin-top: 0.75em;
+	}
+
+	.gallery {
+		padding: 2em 0;
+		border-top: 1px solid rgb(var(--gray-light));
+	}
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1em;
+	}
+	.grid figure {
+		margin: 0;
+	}
+	.grid img {
+		width: 100%;
+		aspect-ratio: 3 / 2;
+		object-fit: cover;
+		border-radius: 6px;
+		display: block;
+		background: rgb(var(--gray-light));
+		transition: transform 0.2s ease;
+	}
+	.grid img:hover {
+		transform: scale(1.01);
+	}
+	.grid figcaption {
+		font-size: 0.85em;
+		color: rgb(var(--gray));
+		margin-top: 0.5em;
+	}
+	@media (max-width: 520px) {
+		.grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

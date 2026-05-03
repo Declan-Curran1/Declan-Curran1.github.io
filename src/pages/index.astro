@@ -4,11 +4,26 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE, SITE_GITHUB, SITE_EMAIL } from '../consts';
+import {
+	SITE_DESCRIPTION,
+	SITE_TITLE,
+	SITE_GITHUB,
+	SITE_LINKEDIN,
+	SITE_INSTAGRAM,
+	SITE_EMAIL,
+} from '../consts';
 
 const posts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.slice(0, 3);
+
+const interests = [
+	'Healthtech',
+	'Climate',
+	'Economics',
+	'AI / science',
+	'Languages',
+];
 ---
 
 <!doctype html>
@@ -23,13 +38,56 @@ const posts = (await getCollection('blog'))
 				<p class="eyebrow">Hi, I'm</p>
 				<h1>Declan Curran.</h1>
 				<p class="lede">
-					A short, punchy line about what you do. Something like &mdash; <em>building things on the
-					internet, writing about what I learn along the way.</em> Replace this with the real
-					version when you have a minute.
+					I love helping businesses solve problems with data. Currently finishing a research
+					Master's in Computer Science on <a href="/work"><strong>climate downscaling</strong></a>
+					&mdash; using ML to turn coarse climate model output into the kind of fine-grained
+					forecasts you can actually plan around.
 				</p>
+				<p class="lede">
+					Off the clock: writing sci-fi short stories, chasing dark skies for landscape and
+					astrophotography, and learning languages. Curious about anything where healthtech,
+					climate, economics, AI, and human behaviour overlap.
+				</p>
+
+				<ul class="interests">
+					{interests.map((tag) => <li>{tag}</li>)}
+				</ul>
+
 				<div class="cta">
-					<a class="btn" href={SITE_GITHUB} target="_blank" rel="noopener">GitHub &rarr;</a>
-					<a class="btn ghost" href={`mailto:${SITE_EMAIL}`}>Get in touch</a>
+					<a class="btn" href={SITE_LINKEDIN} target="_blank" rel="noopener">LinkedIn</a>
+					<a class="btn ghost" href={SITE_GITHUB} target="_blank" rel="noopener">GitHub</a>
+					<a class="btn ghost" href={SITE_INSTAGRAM} target="_blank" rel="noopener">Instagram</a>
+					<a class="btn ghost" href={`mailto:${SITE_EMAIL}`}>Email</a>
+				</div>
+			</section>
+
+			<section class="cards">
+				<a class="card" href="/work">
+					<h3>Work &amp; research <span class="arrow">&rarr;</span></h3>
+					<p>Climate downscaling, applied ML, and a few side projects.</p>
+				</a>
+				<a class="card" href="/photos">
+					<h3>Photos <span class="arrow">&rarr;</span></h3>
+					<p>Landscape, travel, and night-sky shots from down under and elsewhere.</p>
+				</a>
+				<a class="card" href="/blog">
+					<h3>Writing &amp; short stories <span class="arrow">&rarr;</span></h3>
+					<p>Sci-fi short fiction, travel notes, and the occasional technical post.</p>
+				</a>
+			</section>
+
+			<section class="preview">
+				<div class="preview-text">
+					<p class="eyebrow">Featured</p>
+					<h2>From the night sky</h2>
+					<p>
+						Comet C/2023 A3 (Tsuchinshan&ndash;ATLAS) over Mt Kosciuszko. More on the
+						<a href="/photos">photos page</a>.
+					</p>
+				</div>
+				<div class="preview-images">
+					<img src="/media/photos/Koz_Comet_edited.jpg" alt="Comet over Mt Kosciuszko" loading="lazy" />
+					<img src="/media/photos/IMG_0298_edited.jpg" alt="Stars over silhouetted gum trees" loading="lazy" />
 				</div>
 			</section>
 
@@ -61,7 +119,7 @@ const posts = (await getCollection('blog'))
 
 <style>
 	.hero {
-		padding: 5em 0 3em;
+		padding: 5em 0 2.5em;
 	}
 	.eyebrow {
 		color: var(--accent);
@@ -78,23 +136,44 @@ const posts = (await getCollection('blog'))
 		margin: 0 0 0.5em;
 	}
 	.lede {
-		font-size: 1.15em;
+		font-size: 1.1em;
 		color: rgb(var(--gray-dark));
-		max-width: 36em;
-		margin: 0 0 2em;
+		max-width: 38em;
+		margin: 0 0 1em;
 	}
+	.lede a {
+		color: rgb(var(--black));
+	}
+
+	.interests {
+		list-style: none;
+		padding: 0;
+		margin: 1.75em 0 1.75em;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5em;
+	}
+	.interests li {
+		background: rgb(var(--gray-light));
+		color: rgb(var(--gray-dark));
+		padding: 0.3em 0.75em;
+		border-radius: 999px;
+		font-size: 0.85em;
+		font-weight: 500;
+	}
+
 	.cta {
 		display: flex;
-		gap: 0.75em;
+		gap: 0.6em;
 		flex-wrap: wrap;
 	}
 	.btn {
 		display: inline-block;
-		padding: 0.65em 1.1em;
+		padding: 0.6em 1.05em;
 		border-radius: 8px;
 		text-decoration: none;
 		font-weight: 600;
-		font-size: 0.95em;
+		font-size: 0.9em;
 		transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
 		background: var(--accent);
 		color: white;
@@ -112,19 +191,82 @@ const posts = (await getCollection('blog'))
 	}
 	.btn.ghost:hover {
 		background: rgb(var(--gray-light));
+	}
+
+	.cards {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1em;
+		margin: 3em 0 2em;
+	}
+	.card {
+		display: block;
+		padding: 1.25em 1.25em 1.5em;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 10px;
+		text-decoration: none;
 		color: rgb(var(--black));
+		transition: border-color 0.15s ease, transform 0.15s ease;
+	}
+	.card:hover {
+		border-color: var(--accent);
+		transform: translateY(-2px);
+	}
+	.card h3 {
+		font-size: 1em;
+		margin: 0 0 0.4em;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.card .arrow {
+		color: var(--accent);
+		transition: transform 0.15s ease;
+	}
+	.card:hover .arrow {
+		transform: translateX(3px);
+	}
+	.card p {
+		font-size: 0.9em;
+		color: rgb(var(--gray));
+		margin: 0;
+	}
+
+	.preview {
+		margin: 3em 0;
+		padding: 2em 0;
+		border-top: 1px solid rgb(var(--gray-light));
+	}
+	.preview-text {
+		max-width: 38em;
+	}
+	.preview-text h2 {
+		font-size: 1.6em;
+		margin: 0 0 0.4em;
+	}
+	.preview-images {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.5em;
+		margin-top: 1.5em;
+	}
+	.preview-images img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		aspect-ratio: 4 / 3;
+		border-radius: 6px;
 	}
 
 	.recent {
-		padding: 2em 0;
+		padding: 2em 0 1em;
 		border-top: 1px solid rgb(var(--gray-light));
-		margin-top: 2em;
 	}
 	.recent-head {
 		display: flex;
 		align-items: baseline;
 		justify-content: space-between;
-		margin-bottom: 1.5em;
+		margin-bottom: 1.25em;
 	}
 	.recent-head h2 {
 		font-size: 1.4em;
@@ -180,6 +322,15 @@ const posts = (await getCollection('blog'))
 		color: rgb(var(--gray));
 		font-size: 0.9em;
 		margin-top: 0.25em;
+	}
+
+	@media (max-width: 720px) {
+		.cards {
+			grid-template-columns: 1fr;
+		}
+		.preview-images {
+			grid-template-columns: 1fr;
+		}
 	}
 	@media (max-width: 520px) {
 		.post-list a {
