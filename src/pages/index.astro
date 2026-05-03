@@ -1,0 +1,193 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_GITHUB, SITE_EMAIL } from '../consts';
+
+const posts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="hero">
+				<p class="eyebrow">Hi, I'm</p>
+				<h1>Declan Curran.</h1>
+				<p class="lede">
+					A short, punchy line about what you do. Something like &mdash; <em>building things on the
+					internet, writing about what I learn along the way.</em> Replace this with the real
+					version when you have a minute.
+				</p>
+				<div class="cta">
+					<a class="btn" href={SITE_GITHUB} target="_blank" rel="noopener">GitHub &rarr;</a>
+					<a class="btn ghost" href={`mailto:${SITE_EMAIL}`}>Get in touch</a>
+				</div>
+			</section>
+
+			<section class="recent">
+				<div class="recent-head">
+					<h2>Recent writing</h2>
+					<a href="/blog" class="see-all">All posts &rarr;</a>
+				</div>
+				<ul class="post-list">
+					{
+						posts.map((post) => (
+							<li>
+								<a href={`/blog/${post.id}/`}>
+									<span class="post-date">
+										<FormattedDate date={post.data.pubDate} />
+									</span>
+									<span class="post-title">{post.data.title}</span>
+									<span class="post-desc">{post.data.description}</span>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.hero {
+		padding: 5em 0 3em;
+	}
+	.eyebrow {
+		color: var(--accent);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		font-size: 0.85em;
+		margin: 0 0 0.5em;
+	}
+	.hero h1 {
+		font-size: clamp(2.5rem, 7vw, 4rem);
+		line-height: 1.05;
+		letter-spacing: -0.02em;
+		margin: 0 0 0.5em;
+	}
+	.lede {
+		font-size: 1.15em;
+		color: rgb(var(--gray-dark));
+		max-width: 36em;
+		margin: 0 0 2em;
+	}
+	.cta {
+		display: flex;
+		gap: 0.75em;
+		flex-wrap: wrap;
+	}
+	.btn {
+		display: inline-block;
+		padding: 0.65em 1.1em;
+		border-radius: 8px;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 0.95em;
+		transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+		background: var(--accent);
+		color: white;
+		border: 1px solid var(--accent);
+	}
+	.btn:hover {
+		transform: translateY(-1px);
+		background: var(--accent-dark);
+		color: white;
+	}
+	.btn.ghost {
+		background: transparent;
+		color: rgb(var(--black));
+		border-color: rgb(var(--gray-light));
+	}
+	.btn.ghost:hover {
+		background: rgb(var(--gray-light));
+		color: rgb(var(--black));
+	}
+
+	.recent {
+		padding: 2em 0;
+		border-top: 1px solid rgb(var(--gray-light));
+		margin-top: 2em;
+	}
+	.recent-head {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		margin-bottom: 1.5em;
+	}
+	.recent-head h2 {
+		font-size: 1.4em;
+		margin: 0;
+	}
+	.see-all {
+		color: rgb(var(--gray));
+		text-decoration: none;
+		font-size: 0.9em;
+	}
+	.see-all:hover {
+		color: var(--accent);
+	}
+	.post-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.post-list li {
+		border-bottom: 1px solid rgb(var(--gray-light));
+	}
+	.post-list li:last-child {
+		border-bottom: none;
+	}
+	.post-list a {
+		display: grid;
+		grid-template-columns: 7em 1fr;
+		gap: 1em;
+		padding: 1em 0;
+		text-decoration: none;
+		color: rgb(var(--black));
+		align-items: baseline;
+		transition: transform 0.15s ease;
+	}
+	.post-list a:hover {
+		transform: translateX(4px);
+	}
+	.post-list a:hover .post-title {
+		color: var(--accent);
+	}
+	.post-date {
+		color: rgb(var(--gray));
+		font-size: 0.85em;
+		font-variant-numeric: tabular-nums;
+	}
+	.post-title {
+		font-weight: 600;
+		font-size: 1.05em;
+		display: block;
+	}
+	.post-desc {
+		grid-column: 2;
+		color: rgb(var(--gray));
+		font-size: 0.9em;
+		margin-top: 0.25em;
+	}
+	@media (max-width: 520px) {
+		.post-list a {
+			grid-template-columns: 1fr;
+			gap: 0.25em;
+		}
+		.post-desc {
+			grid-column: 1;
+		}
+	}
+</style>
