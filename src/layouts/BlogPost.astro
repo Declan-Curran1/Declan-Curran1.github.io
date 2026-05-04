@@ -8,12 +8,79 @@ import Header from '../components/Header.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, backdrop } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class={backdrop ? 'has-backdrop' : ''}>
 	<head>
 		<BaseHead title={title} description={description} />
+		{
+			backdrop && (
+				<style is:global define:vars={{ backdrop: `url(${backdrop})` }}>
+					html.has-backdrop {
+						background:
+							linear-gradient(rgba(6, 8, 14, 0.78), rgba(6, 8, 14, 0.86)),
+							var(--backdrop) center / cover fixed no-repeat;
+					}
+					html.has-backdrop body {
+						background: transparent;
+						color: rgb(228, 232, 245);
+					}
+					html.has-backdrop header {
+						background: rgba(10, 12, 18, 0.55) !important;
+						backdrop-filter: saturate(160%) blur(10px);
+						border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+					}
+					html.has-backdrop header .brand,
+					html.has-backdrop header nav a {
+						color: rgba(255, 255, 255, 0.92) !important;
+					}
+					html.has-backdrop header nav a:hover {
+						color: var(--accent) !important;
+					}
+					html.has-backdrop footer {
+						color: rgba(255, 255, 255, 0.55);
+						border-top: 1px solid rgba(255, 255, 255, 0.08);
+					}
+					html.has-backdrop footer .social-links a {
+						color: rgba(255, 255, 255, 0.6);
+					}
+					html.has-backdrop .prose {
+						color: rgb(228, 232, 245);
+					}
+					html.has-backdrop .prose p {
+						color: rgba(228, 232, 245, 0.9);
+						font-size: 1.05em;
+					}
+					html.has-backdrop .prose a {
+						color: var(--accent);
+					}
+					html.has-backdrop .prose strong {
+						color: white;
+					}
+					html.has-backdrop .prose blockquote {
+						color: rgba(255, 255, 255, 0.78);
+						border-left-color: var(--accent);
+						font-style: italic;
+					}
+					html.has-backdrop .title h1 {
+						color: white;
+						font-size: clamp(2.2rem, 6vw, 3.4rem);
+						letter-spacing: -0.02em;
+					}
+					html.has-backdrop .date {
+						color: rgba(255, 255, 255, 0.55);
+					}
+					html.has-backdrop hr {
+						border-top-color: rgba(255, 255, 255, 0.18);
+					}
+					html.has-backdrop .prose code {
+						background: rgba(255, 255, 255, 0.08);
+						color: rgb(255, 220, 180);
+					}
+				</style>
+			)
+		}
 		<style>
 			main {
 				width: calc(100% - 2em);
@@ -59,9 +126,13 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<Header />
 		<main>
 			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
+				{
+					!backdrop && heroImage && (
+						<div class="hero-image">
+							<Image width={1020} height={510} src={heroImage} alt="" />
+						</div>
+					)
+				}
 				<div class="prose">
 					<div class="title">
 						<div class="date">
