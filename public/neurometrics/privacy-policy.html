@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>NeuroMetrics — Privacy Policy</title>
+<style>
+  :root { color-scheme: light; }
+  body { max-width: 760px; margin: 0 auto; padding: 28px 20px 64px;
+         font: 16px/1.6 -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+         color: #1c1c28; background: #ffffff; }
+  h1 { font-size: 1.7rem; margin-bottom: .2em; }
+  h2 { font-size: 1.2rem; margin-top: 1.8em; }
+  .meta { color: #666; font-size: .9rem; }
+  .note { background: #f2f3f8; border-radius: 10px; padding: 12px 16px; font-size: .95rem; }
+  a { color: #3b6fd6; }
+  code { background: #f2f3f8; padding: 1px 5px; border-radius: 5px; }
+</style>
+</head>
+<body>
+<h1>NeuroMetrics — Privacy Policy</h1>
+<p class="meta"><strong>Effective date:</strong> 25 June 2026 &nbsp;·&nbsp; <strong>Last updated:</strong> 25 June 2026</p>
+
+<p>NeuroMetrics ("the app", "we", "us", "our") is operated by
+<strong>Declan Curran</strong> of
+<strong>New South Wales, Australia</strong>. This policy explains how we handle
+your personal information under the <strong>Privacy Act 1988 (Cth)</strong> and the
+<strong>Australian Privacy Principles (APPs)</strong>. Because NeuroMetrics handles
+<strong>health information</strong>, we are bound by the Privacy Act and the APPs
+regardless of our size or turnover.</p>
+
+<p><strong>Contact / Privacy Officer:</strong>
+<a href="mailto:declan.curran@outlook.com">declan.curran@outlook.com</a></p>
+
+<h2>1. What NeuroMetrics is (and isn't)</h2>
+<p>NeuroMetrics is a <strong>wellness and self-insight tool</strong>. It estimates
+focus, a "Flow Score", and a mood reading from a consumer EEG headband (Muse).
+These are <strong>personalised wellness estimates, not medical or diagnostic
+measures</strong>. NeuroMetrics is <strong>not a medical device</strong> and does
+not diagnose, treat, cure, or prevent any condition.</p>
+
+<h2>2. The information we collect</h2>
+<p>You can use the core app fully on-device without an account. Cloud features
+(sync, history, comparison to your average) are optional and only begin when you
+choose to sign in.</p>
+<p><strong>a) Account information (only if you create an account):</strong> email
+and password, handled by our authentication provider (Supabase Auth); passwords are
+stored only as a one-way hash. Choosing "Continue anonymously" collects no email —
+only a randomly generated identifier.</p>
+<p><strong>b) Health and wellness information (sensitive information):</strong> when
+you record while signed in, we store a downsampled summary (about one point every
+5 seconds) of EEG-derived brain-state metrics (focus, calm, engagement, fatigue,
+Flow Score), mood estimates (valence, arousal, 0–100 score), heart rate and HRV,
+experimental fNIRS oxygenation, session metadata (duration, headband model,
+optional "intention" label), and any optional mood check-ins. <strong>We do not
+upload your raw EEG waveform.</strong></p>
+<p><strong>c) Stored only on your device (not uploaded):</strong> calibration
+baseline, settings, and the full local copy of recorded sessions.</p>
+<p><strong>d) Technical information:</strong> standard network information needed to
+communicate securely with our backend, handled transiently by our host. No
+advertising identifiers; the app contains no ads and no third-party analytics or
+tracking SDKs.</p>
+<p><strong>Bluetooth &amp; location:</strong> Bluetooth is used solely to connect
+to your headband. On Android 12+ scanning uses the "neverForLocation" flag; we do
+not collect or use your location. Older Android versions require a location
+permission to permit any Bluetooth scan, but we still do not access your location.</p>
+
+<h2>3. Sensitive information and consent (APP 3)</h2>
+<p>Brain, heart, and mood data are "health information", a type of sensitive
+information. We collect it only with your consent, given by choosing to record and
+(for cloud storage) by signing in. You can withdraw consent at any time by
+recording locally, signing out, or deleting your account and data.</p>
+
+<h2>4. How we use your information</h2>
+<ul>
+  <li>To provide the app's features (live metrics, saving sessions, history, and
+      comparing your Flow Score to <em>your own</em> historical average).</li>
+  <li>To operate, secure, and troubleshoot the service.</li>
+  <li><strong>Optional research (opt-in only):</strong> only if you switch on
+      "Help improve the models", your <strong>de-identified</strong> data may be
+      used to improve our wellness models. Off by default; revocable anytime.</li>
+</ul>
+<p>We do not sell your personal information and do not use it for advertising.</p>
+
+<h2>5. Disclosure to third parties</h2>
+<p>We do not disclose your personal information except to our infrastructure
+provider, <strong>Supabase</strong> (database and authentication, as a processor
+under contract), or where required or authorised by law.</p>
+
+<h2>6. Cross-border disclosure (APP 8)</h2>
+<p>Our backend stores data in <strong>Australia (AWS ap-southeast-2)</strong>. By
+using cloud features you consent to storage and processing in that location. Where
+data is held outside Australia, we take reasonable steps to ensure APP-consistent
+handling.</p>
+
+<h2>7. Security and retention (APP 11)</h2>
+<p>Data is encrypted in transit (HTTPS/TLS) and at rest by our host, and is
+restricted per-user by database row-level security. We keep your data until you
+delete it or your account; deletion is permanent.</p>
+
+<h2 id="delete">8. Access, correction, and deletion (APP 12 &amp; 13)</h2>
+<p>View your history in-app and export any session as CSV or JSON. Contact us to
+correct information we hold. To delete everything, open
+<strong>Account → "Delete account &amp; all data"</strong> in the app, which
+permanently removes your account and all cloud and on-device data — or email us to
+request deletion. See our <a href="account-deletion.html">account &amp; data
+deletion page</a> for details.</p>
+
+<h2>9. Anonymity (APP 2)</h2>
+<p>You may use the app without identifying yourself ("Continue anonymously"), or by
+not creating an account at all.</p>
+
+<h2>10. Children</h2>
+<p>NeuroMetrics is intended for adults (18+) and is not directed to children.</p>
+
+<h2>11. Data breaches</h2>
+<p>If a breach likely to cause serious harm occurs, we will notify affected
+individuals and the OAIC as required by the Notifiable Data Breaches scheme.</p>
+
+<h2>12. Complaints</h2>
+<p>Contact us first. If unsatisfied, you may complain to the OAIC at
+<a href="https://www.oaic.gov.au">www.oaic.gov.au</a> or 1300 363 992.</p>
+
+<h2>13. Changes</h2>
+<p>We may update this policy; material changes are reflected by the "Last updated"
+date above.</p>
+</body>
+</html>
