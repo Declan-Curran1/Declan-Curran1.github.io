@@ -20,7 +20,7 @@
 </head>
 <body>
 <h1>NeuroMetrics — Privacy Policy</h1>
-<p class="meta"><strong>Effective date:</strong> 25 June 2026 &nbsp;·&nbsp; <strong>Last updated:</strong> 25 June 2026</p>
+<p class="meta"><strong>Effective date:</strong> 25 June 2026 &nbsp;·&nbsp; <strong>Last updated:</strong> 13 August 2026</p>
 
 <p>NeuroMetrics ("the app", "we", "us", "our") is operated by
 <strong>Declan Curran</strong> of
@@ -46,18 +46,27 @@ not diagnose, treat, cure, or prevent any condition.</p>
 choose to sign in.</p>
 <p><strong>a) Account information (only if you create an account):</strong> email
 and password, handled by our authentication provider (Supabase Auth); passwords are
-stored only as a one-way hash. Choosing "Continue anonymously" collects no email —
-only a randomly generated identifier.</p>
+stored only as a one-way hash. If you choose <strong>"Continue with Google"</strong>,
+Google authenticates you and shares your Google account email address with us; we
+receive no other Google data. Choosing <strong>"Continue as guest"</strong> creates
+no account and sends nothing to the cloud — all data stays on your device.</p>
 <p><strong>b) Health and wellness information (sensitive information):</strong> when
 you record while signed in, we store a downsampled summary (about one point every
 5 seconds) of EEG-derived brain-state metrics (focus, calm, engagement, fatigue,
 Flow Score), mood estimates (valence, arousal, 0–100 score), heart rate and HRV,
 experimental fNIRS oxygenation, session metadata (duration, headband model,
-optional "intention" label), and any optional mood check-ins. <strong>We do not
-upload your raw EEG waveform.</strong></p>
-<p><strong>c) Stored only on your device (not uploaded):</strong> calibration
+optional "intention" label), and any optional mood check-ins.</p>
+<p><strong>c) Raw EEG recordings (opt-in only):</strong> if — and only if — you
+switch on <strong>Settings → "Back up raw EEG recordings"</strong>, the full
+256&nbsp;Hz EEG waveform recorded during your sessions is compressed and uploaded to
+private cloud file storage under your account, together with any mood self-ratings
+(1–9 valence / arousal / dominance scores and optional note) you attached to those
+recordings. This switch is <strong>off by default</strong>; while it is off, your
+raw EEG waveform is never uploaded. You can turn it off at any time, and deleting
+your account permanently deletes the uploaded files.</p>
+<p><strong>d) Stored only on your device (not uploaded):</strong> calibration
 baseline, settings, and the full local copy of recorded sessions.</p>
-<p><strong>d) Technical information:</strong> standard network information needed to
+<p><strong>e) Technical information:</strong> standard network information needed to
 communicate securely with our backend, handled transiently by our host. No
 advertising identifiers; the app contains no ads and no third-party analytics or
 tracking SDKs.</p>
@@ -68,9 +77,11 @@ permission to permit any Bluetooth scan, but we still do not access your locatio
 
 <h2>3. Sensitive information and consent (APP 3)</h2>
 <p>Brain, heart, and mood data are "health information", a type of sensitive
-information. We collect it only with your consent, given by choosing to record and
-(for cloud storage) by signing in. You can withdraw consent at any time by
-recording locally, signing out, or deleting your account and data.</p>
+information. We collect it only with your consent: recording is started by you;
+cloud storage of your metrics requires the express consent checkbox you tick when
+creating an account; and raw-EEG backup requires the separate opt-in switch in
+Settings. You can withdraw consent at any time by using guest mode, turning the
+backup switch off, signing out, or deleting your account and data.</p>
 
 <h2>4. How we use your information</h2>
 <ul>
@@ -85,16 +96,21 @@ recording locally, signing out, or deleting your account and data.</p>
 
 <h2>5. Disclosure to third parties</h2>
 <p>We do not disclose your personal information except to: our infrastructure
-provider, <strong>Supabase</strong> (database and authentication, as a processor
-under contract); <strong>FormSubmit</strong>, a form-delivery service that relays
-data-deletion requests submitted through our website to us by email; or where
-required or authorised by law. We use no third-party advertising, analytics, or
-tracking services.</p>
+providers, <strong>Supabase</strong> (database and authentication) and
+<strong>Cloudflare</strong> (private file storage for opt-in raw-EEG backups), each
+as a processor under contract; <strong>Google</strong> (only if you choose Google
+sign-in, solely to authenticate you); <strong>FormSubmit</strong>, a form-delivery
+service that relays data-deletion requests submitted through our website to us by
+email; or where required or authorised by law. We use no third-party advertising,
+analytics, or tracking services.</p>
 
 <h2>6. Cross-border disclosure (APP 8)</h2>
 <p>Our backend database stores your data in <strong>Australia (AWS
-ap-southeast-2)</strong>. Some operational metadata — such as authentication and
-system logs handled by our provider — may be processed overseas. If you submit a
+ap-southeast-2)</strong>. Opt-in raw-EEG backups are stored with Cloudflare R2 with
+an Asia-Pacific/Oceania location preference; Cloudflare may route or process
+operational metadata through other regions. Some operational metadata — such as
+authentication and system logs handled by our providers — may be processed
+overseas. If you submit a
 data-deletion request through our website form, the details you enter are
 transmitted via our form-delivery provider (FormSubmit) and processed outside
 Australia, solely to deliver your request to us by email. By using cloud features,
@@ -120,8 +136,9 @@ request deletion, which we action within 30 days. See our
 details.</p>
 
 <h2>9. Anonymity (APP 2)</h2>
-<p>You may use the app without identifying yourself ("Continue anonymously"), or by
-not creating an account at all.</p>
+<p>You may use the app without identifying yourself: choose
+<strong>"Continue as guest"</strong> and no account is created and no data leaves
+your device.</p>
 
 <h2>10. Children</h2>
 <p>NeuroMetrics is intended for adults (18+) and is not directed to children.</p>
