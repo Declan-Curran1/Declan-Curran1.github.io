@@ -20,5 +20,12 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# raw camera originals dropped at the repo root (web copies live in public/media)
+/*.MP4
+/*.mp4
+/*.mov
+/*.MOV
+/*.JPG
+
 # jetbrains setting folder
 .idea/

@@ -11,6 +11,15 @@ const sky = [
 	{ src: '/media/photos/IMG_0645_ballina.jpg', alt: 'Night sky from Ballina', caption: 'Ballina, NSW' },
 ];
 
+const tl = (name: string) => ({ src: `/media/timelapses/${name}.mp4`, poster: `/media/timelapses/${name}.jpg` });
+const timelapses = [
+	{ src: '/media/photos/timelapse.mp4', poster: '/media/photos/timelapse-poster.jpg', caption: 'Cloud and stars over a paddock, GoPro on the ground', ratio: '16 / 9', wide: true },
+	{ ...tl('ger-tent-night-sky'), caption: 'Day into night over a ger tent, Mongolia', ratio: '9 / 16' },
+	{ ...tl('khovsgol-nuur'), caption: 'Khövsgöl Nuur, Mongolia', ratio: '9 / 16' },
+	{ ...tl('jackeys-marsh'), caption: 'Jackeys Marsh, Tasmania', ratio: '3 / 4' },
+	{ ...tl('strahan'), caption: 'Strahan, Tasmania', ratio: '3 / 4' },
+];
+
 const road = [
 	{ src: '/media/writing/spider.jpg', alt: 'A spider web across a car side mirror, with Declan reflected in it', caption: 'The spider in my sideview mirror', href: '/blog/to-the-spider-in-my-sideview-mirror/' },
 	{ src: '/media/writing/agu-1.jpg', alt: 'Banksy-style street art of a girl with an umbrella on a New Orleans wall', caption: 'New Orleans, during AGU', href: '/blog/voodoo-mould-and-models/' },
@@ -51,14 +60,20 @@ const road = [
 	<section class="section">
 		<div class="section-head">
 			<span class="num">02</span>
-			<h2>Timelapse</h2>
+			<h2>Timelapses</h2>
 		</div>
-		<figure>
-			<video controls preload="metadata" poster="/media/photos/timelapse-poster.jpg" playsinline muted>
-				<source src="/media/photos/timelapse.mp4" type="video/mp4" />
-			</video>
-			<figcaption>Cloud and stars rolling over a paddock, GoPro on the ground.</figcaption>
-		</figure>
+		<div class="grid tl">
+			{
+				timelapses.map((t) => (
+					<figure class:list={{ wide: t.wide }}>
+						<video controls preload="none" poster={t.poster} playsinline muted loop style={`aspect-ratio: ${t.ratio}`}>
+							<source src={t.src} type="video/mp4" />
+						</video>
+						<figcaption>{t.caption}</figcaption>
+					</figure>
+				))
+			}
+		</div>
 	</section>
 
 	<section class="section">
@@ -117,6 +132,7 @@ const road = [
 	}
 	video {
 		width: 100%;
+		object-fit: cover;
 		display: block;
 		background: #000;
 		border-radius: 3px;
@@ -124,6 +140,9 @@ const road = [
 	@media (max-width: 520px) {
 		.grid {
 			grid-template-columns: 1fr;
+		}
+		.grid.tl {
+			grid-template-columns: 1fr 1fr;
 		}
 	}
 </style>
