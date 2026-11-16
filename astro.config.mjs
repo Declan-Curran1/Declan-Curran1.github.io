@@ -8,7 +8,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://declan-curran1.github.io',
+	site: 'https://declanjacques.blog',
 	integrations: [mdx(), sitemap()],
 
 	fonts: [
