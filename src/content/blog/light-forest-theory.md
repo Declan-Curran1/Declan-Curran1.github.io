@@ -1,8 +1,11 @@
 ---
 title: 'The Light Forest Theory'
-description: 'A short sci-fi story. Two aliens, a cup of caffeinated gelatin, and a quiet planet that may not actually be empty.'
+description: 'A very short sci-fi story. Two aliens, a cup of caffeinated gelatin, and a quiet planet that may not actually be empty.'
 pubDate: 'May 04 2026'
-backdrop: '/media/photos/IMG_0298_edited.jpg'
+kind: 'story'
+featured: true
+cover: '/media/writing/coffee-galaxy.svg'
+coverAlt: 'Steam from a cup of coffee curling up into a spiral galaxy'
 ---
 
 The careful hunter looms in the forest. The forest is full of deadly animals: lions and tigers and bears. If he does not shoot, he will die.

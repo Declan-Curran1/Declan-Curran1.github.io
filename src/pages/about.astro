@@ -1,45 +1,75 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import Page from '../layouts/Page.astro';
+import { SITE_EMAIL, SITE_GITHUB, SITE_INSTAGRAM, SITE_LINKEDIN, SITE_SUBSTACK } from '../consts';
 ---
 
-<Layout
-	title="About"
-	description="A bit about Declan Curran."
-	pubDate={new Date()}
->
-	<p>
-		Hi &mdash; I'm Declan. I'm finishing a research Master's in Computer Science focused on
-		<strong>climate downscaling</strong>: using machine learning to take coarse global climate
-		model output and turn it into the kind of fine-grained, locally useful predictions you can
-		actually plan around.
-	</p>
+<Page title="About · Declan Curran" description="A bit about Declan Curran.">
+	<header class="page-head">
+		<span class="kicker">about</span>
+		<h1>Hi, I'm Declan.</h1>
+		<p class="question">Weishenme? (Why?)</p>
+	</header>
+
+	<figure class="portrait">
+		<img src="/media/portrait.jpg" alt="Declan in a beanie and puffer jacket, looking up into the trees" />
+	</figure>
 
 	<p>
-		Outside the research I love helping businesses solve problems with data &mdash; the messier
-		and more cross-disciplinary the better. I'm especially drawn to <strong>healthtech</strong>,
-		<strong>climate</strong>, <strong>economics</strong>, and anything sitting at the boundary
-		of <strong>AI, science, and human behaviour</strong>. I also enjoy learning languages, mostly
-		for the same reason: they're a way of seeing how someone else carved up the world.
+		I'm finishing a research Master's in Computer Science focused on <a href="/work/">climate downscaling</a>:
+		using machine learning to take coarse global climate model output and turn it into fine-grained, locally
+		useful predictions you can plan around.
 	</p>
-
 	<p>
-		When I'm not at a screen I'm usually outside with a camera. I write
-		<a href="/blog">sci-fi short stories</a>, shoot <a href="/photos">landscape and night-sky
-		photography</a>, and travel as much as work allows.
+		Outside the research I love helping businesses solve problems with data, and the messier and more
+		cross-disciplinary the problem, the better. I'm drawn to healthtech, climate, economics, and anything at
+		the boundary of AI, science and human behaviour.
 	</p>
-
-	<h2>Elsewhere</h2>
-	<ul>
-		<li><a href="https://www.linkedin.com/in/declan-curran/">LinkedIn</a></li>
-		<li><a href="https://github.com/Declan-Curran1">GitHub</a></li>
-		<li><a href="https://www.instagram.com/declan_curran/">Instagram</a></li>
-		<li><a href="mailto:dc4069@gmail.com">Email</a></li>
-	</ul>
-
-	<h2>Get in touch</h2>
 	<p>
-		If you're working on something at the intersection of data, climate, healthtech or science
-		&mdash; or you just want to chat about a story idea or a dark-sky spot &mdash; the inbox
-		<a href="mailto:dc4069@gmail.com">is open</a>.
+		I learn languages for the same reason I ask too many questions. On a study tour in Liaoning, a guide
+		nicknamed me <em>Weishenme</em>, Mandarin for "Why?". I write <a href="/blog/">short stories, poems and
+		travel essays</a>, shoot <a href="/photos/">night skies</a>, and travel as much as work allows.
 	</p>
-</Layout>
+
+	<section class="section">
+		<div class="section-head">
+			<span class="num">→</span>
+			<h2>Elsewhere</h2>
+		</div>
+		<ul class="hello mono">
+			<li><span>email</span><a href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a></li>
+			<li><span>linkedin</span><a href={SITE_LINKEDIN}>in/declan-curran</a></li>
+			<li><span>substack</span><a href={SITE_SUBSTACK}>@jacquessauvage</a></li>
+			<li><span>github</span><a href={SITE_GITHUB}>Declan-Curran1</a></li>
+			<li><span>instagram</span><a href={SITE_INSTAGRAM}>@declan_curran</a></li>
+		</ul>
+	</section>
+</Page>
+
+<style>
+	.page-head {
+		padding-top: 3.2rem;
+	}
+	.portrait {
+		max-width: 320px;
+		margin: 0 0 2rem;
+	}
+	.portrait img {
+		aspect-ratio: 4 / 5;
+		object-fit: cover;
+		object-position: 50% 25%;
+	}
+	.hello {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		font-size: 0.82rem;
+	}
+	.hello li {
+		display: grid;
+		grid-template-columns: 6.5rem 1fr;
+		padding: 0.25rem 0;
+	}
+	.hello span {
+		color: var(--muted);
+	}
+</style>

@@ -1,114 +1,134 @@
 ---
-import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
-import Header from '../../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+import Page from '../../layouts/Page.astro';
+import { SITE_SUBSTACK } from '../../consts';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+const groups = [
+	{ kind: 'story', title: 'Stories', gloss: 'very short, mostly sci-fi' },
+	{ kind: 'poem', title: 'Poems', gloss: 'for small companions' },
+	{ kind: 'essay', title: 'Essays & postcards', gloss: 'from places I have been' },
+	{ kind: 'note', title: 'Notes', gloss: 'odds and ends' },
+]
+	.map((g) => ({ ...g, items: posts.filter((p) => p.data.kind === g.kind) }))
+	.filter((g) => g.items.length);
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
+<Page title="Writing · Declan Curran" description="Short stories, poems and travel essays by Declan Curran.">
+	<header class="page-head">
+		<span class="kicker">writing <span class="dot">·</span> stories, poems, postcards</span>
+		<h1>Writing</h1>
+		<p class="question">What is coffee without a smell?</p>
+		<p class="lede">
+			Very short fiction, the occasional poem, and essays from places I've travelled. Most of it is also
+			on <a href={SITE_SUBSTACK}>Substack</a>.
+		</p>
+	</header>
+
+	{
+		groups.map((g, i) => (
+			<section class="section">
+				<div class="section-head">
+					<span class="num">{String(i + 1).padStart(2, '0')}</span>
+					<h2>{g.title}</h2>
+					<span class="mono gloss">{g.gloss}</span>
+				</div>
+				<ol class="cards">
+					{g.items.map((p) => (
+						<li>
+							<a href={`/blog/${p.id}/`}>
+								{p.data.cover && (
+									<span class:list={['thumb', { night: p.data.kind === 'story' }]}>
+										<img src={p.data.cover} alt="" loading="lazy" />
+									</span>
+								)}
+								<span class="body">
+									<span class="title">{p.data.title}</span>
+									<span class="desc">{p.data.description}</span>
+									<span class="mono">
+										<FormattedDate date={p.data.pubDate} />
+									</span>
+								</span>
+							</a>
+						</li>
+					))}
+				</ol>
 			</section>
-		</main>
-		<Footer />
-	</body>
-</html>
+		))
+	}
+</Page>
+
+<style>
+	.page-head {
+		padding-top: 3.2rem;
+	}
+	.gloss {
+		margin-left: auto;
+		font-style: normal;
+	}
+	.cards {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+	.cards li + li {
+		border-top: 1px dashed var(--rule);
+	}
+	.cards a {
+		display: grid;
+		grid-template-columns: 8.5rem 1fr;
+		gap: 1.1rem;
+		padding: 1rem 0;
+		text-decoration: none;
+		color: inherit;
+	}
+	.thumb {
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+		border-radius: 3px;
+		background: var(--paper-2);
+	}
+	.thumb.night {
+		background: var(--night);
+	}
+	.thumb img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.4s ease;
+	}
+	.cards a:hover img {
+		transform: scale(1.04);
+	}
+	.body {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+	}
+	.title {
+		color: var(--ink);
+		font-size: 1.18rem;
+		line-height: 1.25;
+	}
+	.cards a:hover .title {
+		color: var(--accent);
+	}
+	.desc {
+		color: var(--muted);
+		font-size: 0.95rem;
+		line-height: 1.45;
+	}
+	@media (max-width: 520px) {
+		.cards a {
+			grid-template-columns: 5.5rem 1fr;
+			gap: 0.9rem;
+		}
+		.gloss {
+			display: none;
+		}
+	}
+</style>

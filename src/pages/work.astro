@@ -1,148 +1,85 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_TITLE } from '../consts';
-
-const title = 'Work & research';
-const description = 'Climate downscaling research and applied ML side-projects.';
+import Page from '../layouts/Page.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={`${title} — ${SITE_TITLE}`} description={description} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section class="head">
-				<p class="eyebrow">Work &amp; research</p>
-				<h1>What I'm working on.</h1>
-				<p class="lede">
-					Mostly: turning data into decisions. Currently finishing a research Master's and
-					tinkering with applied ML side-projects.
-				</p>
-			</section>
+<Page title="Research · Declan Curran" description="Climate downscaling research and applied ML side projects by Declan Curran." image="/media/work/precipitation-var4-poster.jpg">
+	<header class="page-head">
+		<span class="kicker">research <span class="dot">·</span> questions before models</span>
+		<h1>Research</h1>
+		<p class="question">What would you do with a forecast for your own backyard?</p>
+		<p class="lede">
+			Mostly I turn data into decisions. I'm finishing a research Master's in Computer Science and
+			tinkering with applied ML side projects.
+		</p>
+	</header>
 
-			<article class="project">
-				<header>
-					<h2>Climate downscaling with hierarchical denoising</h2>
-					<p class="role">Research Master's, Computer Science</p>
-				</header>
-				<p>
-					Global climate models are coarse &mdash; typically 25&ndash;100 km per grid cell &mdash;
-					which is fine for global trends but useless if you need to know what's about to happen
-					over your specific catchment, vineyard, or grid asset. My research uses a hierarchical
-					denoising approach to take that coarse model output and produce high-resolution
-					predictions that match the underlying physics.
-				</p>
-				<figure>
-					<video
-						autoplay
-						loop
-						muted
-						playsinline
-						preload="metadata"
-						poster="/media/work/precipitation-var4-poster.jpg"
-					>
-						<source src="/media/work/precipitation-var4.mp4" type="video/mp4" />
-						Your browser does not support the video tag.
-					</video>
-					<figcaption>
-						<strong>Precipitation (var 4) over training</strong> &mdash; the model's
-						<strong>prediction</strong> on the left, and the <strong>residual</strong>
-						against ground truth on the right. Watch the prediction develop fine-scale
-						structure as training progresses; the residual stays low-magnitude throughout.
-					</figcaption>
-				</figure>
-			</article>
+	<section class="section">
+		<div class="section-head">
+			<span class="num">01</span>
+			<h2>Climate downscaling with hierarchical denoising</h2>
+		</div>
+		<span class="kicker">research master's <span class="dot">·</span> computer science</span>
+		<p>
+			Global climate models are coarse, typically 25–100 km per grid cell. That's fine for global trends but
+			useless if you need to know what's about to happen over your catchment, vineyard, or grid asset. My
+			research uses a hierarchical denoising approach to take that coarse output and produce high-resolution
+			predictions that match the underlying physics.
+		</p>
+		<figure>
+			<video autoplay loop muted playsinline preload="metadata" poster="/media/work/precipitation-var4-poster.jpg">
+				<source src="/media/work/precipitation-var4.mp4" type="video/mp4" />
+			</video>
+			<figcaption>
+				Precipitation (var 4) over training: the model's prediction on the left and the residual against
+				ground truth on the right. The prediction develops fine-scale structure as training goes on, while
+				the residual stays small throughout.
+			</figcaption>
+		</figure>
+		<p class="tags mono">Downscaling · Diffusion & denoising · Climate models · Physical consistency</p>
+	</section>
 
-			<article class="project">
-				<header>
-					<h2>Fish-GPT</h2>
-					<p class="role">Side project &middot; vision + LLM</p>
-				</header>
-				<p>
-					A toy that wires a vision model into a chat interface so you can point a camera at a
-					fish (or anything, really) and ask follow-up questions. Built mainly to see what the
-					failure modes of current vision-language models actually look like on natural,
-					non-curated input.
-				</p>
-				<figure>
-					<video
-						controls
-						preload="metadata"
-						poster="/media/work/fish-gpt-poster.jpg"
-						playsinline
-					>
-						<source src="/media/work/fish-gpt.mp4" type="video/mp4" />
-						Your browser does not support the video tag.
-					</video>
-					<figcaption>Short demo &mdash; identification + Q&amp;A on a single fish image.</figcaption>
-				</figure>
-			</article>
-		</main>
-		<Footer />
-	</body>
-</html>
+	<section class="section">
+		<div class="section-head">
+			<span class="num">02</span>
+			<h2>Fish-GPT</h2>
+		</div>
+		<span class="kicker">side project <span class="dot">·</span> vision + llm</span>
+		<p>
+			A toy that wires a vision model into a chat interface, so you can point a camera at a fish (or anything,
+			really) and ask follow-up questions. I built it mainly to see what the failure modes of current
+			vision-language models look like on natural, uncurated input.
+		</p>
+		<figure>
+			<video controls preload="metadata" poster="/media/work/fish-gpt-poster.jpg" playsinline>
+				<source src="/media/work/fish-gpt.mp4" type="video/mp4" />
+			</video>
+			<figcaption>Short demo: identification and Q&amp;A on a single fish image.</figcaption>
+		</figure>
+	</section>
+
+	<section class="section">
+		<div class="section-head">
+			<span class="num">03</span>
+			<h2>Postcards from the field</h2>
+		</div>
+		<p>
+			Sometimes the science leaks into the writing. <a href="/blog/voodoo-mould-and-models/">Voodoo, Mould, and
+			Models</a> is a postcard from the American Geophysical Union conference in New Orleans.
+		</p>
+	</section>
+</Page>
 
 <style>
-	.head {
-		padding: 4em 0 2em;
+	.page-head {
+		padding-top: 3.2rem;
 	}
-	.eyebrow {
-		color: var(--accent);
-		font-weight: 600;
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		font-size: 0.85em;
-		margin: 0 0 0.5em;
-	}
-	.head h1 {
-		font-size: clamp(2.2rem, 6vw, 3.2rem);
-		line-height: 1.1;
-		letter-spacing: -0.02em;
-		margin: 0 0 0.5em;
-	}
-	.lede {
-		font-size: 1.1em;
-		color: rgb(var(--gray-dark));
-		max-width: 38em;
-		margin: 0;
-	}
-
-	.project {
-		padding: 2.5em 0;
-		border-top: 1px solid rgb(var(--gray-light));
-	}
-	.project header h2 {
-		font-size: 1.5em;
-		margin: 0 0 0.2em;
-	}
-	.project .role {
-		color: rgb(var(--gray));
-		font-size: 0.9em;
-		margin: 0 0 1em;
-	}
-	.project p {
-		max-width: 38em;
-	}
-	figure {
-		margin: 1.5em 0 0;
-	}
-	figure img,
-	figure video {
+	video {
 		width: 100%;
-		max-width: 100%;
-		border-radius: 8px;
 		display: block;
-		background: rgb(var(--gray-light));
+		border-radius: 3px;
+		background: var(--paper-2);
 	}
-	figcaption {
-		font-size: 0.85em;
-		color: rgb(var(--gray));
-		margin-top: 0.75em;
-		max-width: 38em;
+	.tags {
+		margin-top: -0.4rem;
 	}
 </style>
