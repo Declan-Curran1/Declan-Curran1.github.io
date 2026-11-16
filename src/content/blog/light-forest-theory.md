@@ -1,16 +1,21 @@
 ---
 title: 'The Light Forest Theory'
 description: 'A very short sci-fi story. Two aliens, a cup of caffeinated gelatin, and a quiet planet that may not actually be empty.'
-pubDate: 'May 04 2026'
+pubDate: '2026-05-04'
 kind: 'story'
 featured: true
-cover: '/media/writing/coffee-galaxy.svg'
-coverAlt: 'Steam from a cup of coffee curling up into a spiral galaxy'
+cover: '/media/writing/coffee-window.jpg'
+coverAlt: 'Two cups of coffee steaming on a sunlit windowsill, with gum trees outside the window'
 ---
 
 The careful hunter looms in the forest. The forest is full of deadly animals: lions and tigers and bears. If he does not shoot, he will die.
 
 Well, what do we have here? It was most accurate to say that the information came over his senses rather than anything else. It was culture, war, romance, death... life. And then, nothing. He had seen it before. But this one was strange. The inhabitants called their system 'Sol' and seemed to have an obsession with caffeine?! Convergent evolution is a crazy thing. Glorb took a sip of his own cup.
+
+<figure class="star">
+  <img src="/media/photos/IMG_0298_edited.jpg" alt="The Milky Way above silhouetted gum trees" loading="lazy" />
+  <figcaption>The view from Sol. Stars and gums, NSW.</figcaption>
+</figure>
 
 But what was this?
 
@@ -19,6 +24,11 @@ It was as if&mdash;he checked the readings&mdash;they had already died. Certainl
 Well, it was inevitable, he guessed; there were too many obstacles. Maybe one in ten million made it through. They would never have had enough resources. Or, if they passed the industrialisation and colonisation of their solar system, there was the case of overcoming the Kullback-energy requirement. Let alone the dual sentience problem. And then, there was the grey goo... Even the 99th percentile intelligences couldn't surpass the grey goo. In fact, it was a well-known fact in the civilized universe that the only way to survive was to become a beacon: either to band together resources from other local intelligences or to seek patronage from the ascended.
 
 But, what's this? There was still an energy signature there. Not that they could tell at their current level, but they were emitting latent biosignatures&mdash;the ones a Class I civilisation wouldn't expect, wouldn't know about.
+
+<figure class="star">
+  <img src="/media/photos/Koz_Comet_edited.jpg" alt="Comet Tsuchinshan–ATLAS over Mt Kosciuszko" loading="lazy" />
+  <figcaption>Comet C/2023 A3 (Tsuchinshan–ATLAS) over Mt Kosciuszko.</figcaption>
+</figure>
 
 "Glorb II, come look at this." He was consumed with his own cup of caffeinated gelatin, a natural byproduct of one of the species on their world.
 
@@ -34,6 +44,11 @@ The message beamed through his own body, shifting, internalising; he felt the we
 
 "They are... hiding. It's faint, but there are energy sources, ever so slight ones, ones that shine beyond their draped veil."
 
+<figure class="star">
+  <img src="/media/photos/Kosciuszko_Short.jpg" alt="Stars rising over the Kosciuszko ridge" loading="lazy" />
+  <figcaption>Kosciuszko, short exposure.</figcaption>
+</figure>
+
 "From what?!"
 
 "Who's to say? It could be anything, or anyone, really."
@@ -41,6 +56,11 @@ The message beamed through his own body, shifting, internalising; he felt the we
 In fact, Glorb had long thought civilization was like coffee in many ways. You take the unrefined, unprocessed, unfiltered intelligence. You screen it, you process it, its beautiful flavours intermingling gently over many millennia, gaining flavour, depth, definition. And then, once it is ready, a deep aroma presents: complex flavours&mdash;love, sadness, hate. All in one beautiful package. Everybody can smell it. A whole room enjoying a single glass.
 
 But... there is no smell here. Not anymore. What is coffee without a smell? Well, on this planet, it's just... beans. Organic matter, prone to decay, eventual detritus to be lost to the annals of time.
+
+<figure class="star">
+  <img src="/media/photos/IMG_0640_ballina.jpg" alt="Night sky over Ballina, NSW" loading="lazy" />
+  <figcaption>Ballina, NSW.</figcaption>
+</figure>
 
 "Well, we have to help them," Glorb said, motioning to the screen.
 

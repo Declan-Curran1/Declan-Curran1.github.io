@@ -7,7 +7,7 @@ import Page from './Page.astro';
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, kind, cover, coverAlt, substack } = Astro.props;
-const isStory = kind === 'story';
+const isStory = kind === 'story' && !!cover?.endsWith('.svg');
 const ogImage = cover && !cover.endsWith('.svg') ? cover : undefined;
 ---
 
@@ -92,6 +92,23 @@ const ogImage = cover && !cover.endsWith('.svg') ? cover : undefined;
 	.prose :global(img) {
 		margin: 2rem 0;
 	}
+	/* star photos set between paragraphs of a story */
+	.prose :global(figure.star) {
+		margin: 2.6rem -8px;
+	}
+	.prose :global(figure.star img) {
+		margin: 0;
+		border-radius: 4px;
+		background: var(--night);
+		aspect-ratio: 3 / 2;
+		object-fit: cover;
+	}
+	.prose :global(figure.star figcaption) {
+		font-family: var(--font-mono);
+		font-style: normal;
+		font-size: 0.7rem;
+		padding-left: 8px;
+	}
 	.prose :global(em) {
 		color: var(--muted);
 	}
@@ -137,7 +154,8 @@ const ogImage = cover && !cover.endsWith('.svg') ? cover : undefined;
 		color: var(--accent);
 	}
 	@media (max-width: 640px) {
-		.cover.night {
+		.cover.night,
+		.prose :global(figure.star) {
 			margin-left: 0;
 			margin-right: 0;
 		}
